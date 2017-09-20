@@ -1,0 +1,69 @@
+<div style="text-align: center">
+        <input style="height: 33px; border-radius: 7px" type="text"
+           #textbox
+           (keyup)="onKey($event)"
+           (keyup.enter)="search(textbox.value)">
+
+    <button class="btn btn-primary" style="border-radius: 5px;box-shadow: aliceblue;"
+            (click)="searchFilms(textbox.value)">Search
+    </button>
+
+<div *ngIf="!text">
+   <div style="border: 1px solid black; background-color: white; display: flex; flex-direction: row; width: 50%; border-radius: 3px; margin: auto"
+             *ngFor="let film of films">
+            <div style="width: 45px; height: 67px">
+
+                <a [routerLink]="['../film', film.id]">
+                    <img src="{{ film.poster_path ? urlImage+film.poster_path : null }}" alt=""></a>
+            </div>
+            <div style="text-align: left; height: 67px; margin-left: 5px"><strong> {{ film.title }} </strong>
+           <!-- <span title="Original Title" *ngIf="film.title!=film.original_title"> ({{ film.original_title}})</span>-->
+                <span title="Vote Average" style="background-color: azure"> {{ film.vote_average }}
+                    <span class="glyphicon glyphicon-star"> </span></span>
+                <span title="Release Date"> {{ film.release_date.substring(0, 4) }} </span><br>
+                <span style="font-size: 12px">
+                    {{film.overview.substring(0, film.overview.substring(0, 110).lastIndexOf(" "))+ " ... " }}
+                </span><a [routerLink]="['../film', film.id]"> More </a>
+            </div>
+
+        </div>
+</div>
+    <div *ngIf="isArray" style="text-align: center">NO DATA FOUND</div>
+
+<!--<button *ngIf="isArrayMore20">More</button>-->
+   <!-- <router-outlet></router-outlet>-->
+</div>
+
+<!-- search -->
+<div *ngIf="text" class="container" style="width: 1200px;">
+    <div class="row border">
+        <div *ngFor="let film of films" class="col-sm-5" style="  margin-bottom: 30px; margin-left: 20px;  background-color: white;  ">
+            <div class="row">
+                <div class="col-sm-5" style="padding: 0; height: 278px; width: 185px; display: table">
+                    <img *ngIf="film.poster_path" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{film.poster_path }}" alt=""> <div *ngIf="!film.poster_path" style="text-align:center; display: table-cell; vertical-align: middle;"> NO PHOTO</div>
+                </div>
+                <div class="card col-sm-7">
+                    <div class="card-block">
+                        <h5 class="card-title">{{ film.title }}</h5>
+                        <div>
+                            <div class="glyphicon glyphicon-calendar" style="float: left" title="Release Date">{{ film.release_date }}</div>
+                            <div title="Vote average" style="text-align: right" >{{film.vote_average}}
+                                <span class="glyphicon glyphicon-star"></span>
+                            </div>
+                        </div>
+                        <div class="text">
+                            <div class="text__inner">
+                                {{film.overview.substring(0, film.overview.substring(0, 350).lastIndexOf(" ")) + "..." }}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a [routerLink]="['../film', film.id]" routerLinkActive="active"> More Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

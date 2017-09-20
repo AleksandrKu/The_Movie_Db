@@ -1,0 +1,14 @@
+.text {
+    overflow: hidden;
+    height: 190px;
+    width: 250px;
+}
+
+.text__inner {
+    -webkit-column-width: 150px;
+    -moz-column-width: 150px;
+    column-width: 150px;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

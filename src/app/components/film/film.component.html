@@ -1,0 +1,44 @@
+<div>
+    <!--<div [style.background-image]="backdropPath" class="background">-->
+    <div [style.background-image]="backdropPath" class="background">
+        <div class="container shadow">
+            <div class="row">
+                <!--<div class="col-sm-1"></div>-->
+                <div class="col-sm-4">
+                    <img *ngIf="isPoster" class="image" [src]="posterPath" alt="">
+                </div>
+                <div class="col-sm-5">
+                    <h2>{{ title }}</h2>
+                    <h3 *ngIf="title!=originalTitle" title="Original Title"> {{ originalTitle}}</h3>
+                    <div title="Vote Average" style="font-size: larger; text-align: center">{{voteAverage}} <span
+                            class="glyphicon glyphicon-star"></span>
+                        <span style="margin-left: 60px">Vote Count: {{voteCount}}</span></div>
+
+                    <div style="margin: 12px; color: white"> {{overview}}</div>
+                </div>
+                <div class="col-sm-3" style="color: white">
+                    <br><div><strong>Release Date: </strong>
+                        <p>{{releaseDate}}</p></div>
+                    <div><strong>Budget: </strong>
+                        <p>${{budget}}</p></div>
+                    <div><strong>Genres:</strong>
+                        <p><span *ngFor=" let genre of genres">  {{ genre.name }} </span></p></div>
+                    <div><strong>Production Companies:<br></strong> <span *ngFor=" let company of productionCompanies">  {{ company.name }}<br> </span>
+                    </div>
+                    <div><strong>Production Countries:<br></strong> <span *ngFor=" let country of productionCountries">  {{ country.name }} </span>
+                    </div>
+                    <div><strong>Runtime: </strong>
+                        <p>{{ runtime }}m</p></div>
+                    <div><strong>Spoken Languages: </strong>
+                        <span *ngFor=" let language of spokenLanguages"> {{ language.name }} </span>
+                    </div>
+                </div>
+                <!--<div class="col-sm-1"></div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div></div>
+
+
+

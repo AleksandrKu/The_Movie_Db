@@ -1,0 +1,21 @@
+
+nav a {
+    text-decoration: none;
+    transition: all 0.5s;
+    color: black;
+    margin: 10px;
+}
+nav a.active {
+    border-radius: 3px;
+    padding: 4px 12px;
+    background-color: gray;
+    color:white;
+    margin: 10px;
+}
+.center {
+    text-align: center;
+    font-size: 18px;
+    margin: 5px;
+
+
+}
